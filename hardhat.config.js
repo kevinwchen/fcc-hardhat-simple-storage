@@ -3,6 +3,7 @@ require("dotenv").config()
 require("@nomiclabs/hardhat-etherscan")
 require("./tasks/block-number")
 require("hardhat-gas-reporter")
+require("solidity-coverage")
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
@@ -35,6 +36,6 @@ module.exports = {
     noColors: true,
     currency: "USD",
     coinmarketcap: COINMARKETCAP_API_KEY,
-    token: "MATIC",
+    // token: "MATIC",
   },
 }

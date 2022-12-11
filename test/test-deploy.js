@@ -19,11 +19,24 @@ describe("SimpleStorage", () => {
     // Alternative method to check test condition
     // expect(currentValue.toString().to.equal(expectedValue))
   })
-  it("Should updated when we call store", async function () {
-    const expectedValue = "7"
+  it("Should update when store function is called", async function () {
+    const expectedValue = "4"
     const transactionResponse = await simpleStorage.store(expectedValue)
     await transactionResponse.wait(1)
     const currentValue = await simpleStorage.retrieve()
     assert.equal(currentValue.toString(), expectedValue)
+  })
+  it("Should add a person and their favourite number to the People array when addPerson is called", async function () {
+    const expectedValue = "7"
+    const expectedPerson = "Kevin"
+    const transactionResponse = await simpleStorage.addPerson(
+      expectedPerson,
+      expectedValue
+    )
+    await transactionResponse.wait(1)
+    const currentPerson = await simpleStorage.retrieveLatestName()
+    const currentValue = await simpleStorage.retrieveLatestNumber()
+    assert.equal(currentValue.toString(), expectedValue)
+    assert.equal(currentPerson, expectedPerson)
   })
 })
